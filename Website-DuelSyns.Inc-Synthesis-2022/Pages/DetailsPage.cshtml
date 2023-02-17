@@ -1,0 +1,40 @@
+﻿@page
+@model Website_DuelSyns.Inc_Synthesis_2022.Pages.DetailsPageModel
+@{
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<div class="welcome-title">
+<h1>Matches</h1>
+</div>
+<body>
+@if (Model.Match != null)
+{
+    @foreach (var item in Model.Match)
+    {
+        Model.HomePlayerName = Model.managingPerson.GetPlayerName(item.HomePlayerId);
+        Model.AwayPlayerName = Model.managingPerson.GetPlayerName(item.AwayPlayerId);
+        <div class= "SignUpForTournament">
+        <h1>@Model.HomePlayerName 
+            @item.HomePlayerScore
+            vs
+            @Model.AwayPlayerName 
+            @item.AwayPlayerScore</h1>
+@*        <h3><p>ID : @item.TournamentId</p>
+        <p>Type: @item.SportTypeDTO.Name</p>
+        <p>Start Date : @item.StartingDate.ToString("dd/MM/yyyy")</p>
+        <p>End Date : @item.EndDate.ToString("dd/MM/yyyy")</p>
+        <p>Spots left : @(@item.MaxPlayers - @item.RegisteredPlayers)</p></h3>
+        <form class="Register" method="post"> <button class = "Register" asp-route-id="@item.TournamentId" >Register</button></form>*@
+        </div>
+        <br />
+    }
+}   
+else
+{
+    <div class= "SignUpForTournamentUp">
+    <h3><p>No Tournaments available for registering</p></h3>
+    </div>
+    <br />
+}
+</body>

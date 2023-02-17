@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+}
+
+    <form class="LoginForm" method="post">
+          <div>
+              <label>Player ID:</label>
+              <input asp-for="person.ID" type="text"/>
+          </div>
+          <div>
+              <label>User Password:</label>
+            <input asp-for="person.Password" type="password"/>
+          </div>
+          <button class = "MenuButton LoginButton" type="submit">Login</button>
+     </form>  

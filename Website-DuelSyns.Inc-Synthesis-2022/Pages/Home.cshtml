@@ -1,0 +1,47 @@
+﻿@page
+@model Website_DuelSyns.Inc_Synthesis_2022.Pages.HomeModel
+@{
+}
+  <div class="welcome-title">
+ <h1>Welcome back @Model.User.Identity.Name</h1>
+ </div>
+ <div class="container-home">
+    @if(Model.TournamentID == 0)
+    {
+        <div class= "ShowTournamentHomePage">
+           <h1>You are currently not signed up to any tournament, go ahead to the tournament page and sign up for one ! don't miss out on the fun !</h1>
+        </div>
+    }
+    else
+    { @if (Model.UpcomingtournamentOfCurrentUser.Count != 0)
+        {
+                <div class= "ShowTournamentHomePage">
+                <h4> Your upcoming tournament is :</h4>
+                <h1>@Model.UpcomingtournamentOfCurrentUser[0].TournamentName</h1>
+                <h3><p>ID : @Model.UpcomingtournamentOfCurrentUser[0].TournamentId</p>
+                <p>Type: @Model.UpcomingtournamentOfCurrentUser[0].SportTypeDTO.Name</p>
+                <p>Location : @Model.UpcomingtournamentOfCurrentUser[0].Location</p>
+                <p>Start Date : @Model.UpcomingtournamentOfCurrentUser[0].StartingDate.ToString("dd/MM/yyyy")</p>
+                <p>End Date : @Model.UpcomingtournamentOfCurrentUser[0].EndDate.ToString("dd/MM/yyyy")</p></h3>
+                </div>
+                <br />
+       }
+     else if(Model.CurrentTournamentOfCurrentUser.Count != 0)
+     {
+                <div class= "ShowTournamentHomePage">
+                <h4> Your current tournament is :</h4>
+                <h1>@Model.CurrentTournamentOfCurrentUser[0].TournamentName</h1>
+                <h3><p>ID : @Model.CurrentTournamentOfCurrentUser[0].TournamentId</p>
+                <p>Type: @Model.CurrentTournamentOfCurrentUser[0].SportTypeDTO.Name</p>
+                <p>Location : @Model.CurrentTournamentOfCurrentUser[0].Location</p>
+                <p>Start Date : @Model.CurrentTournamentOfCurrentUser[0].StartingDate.ToString("dd/MM/yyyy")</p>
+                <p>End Date : @Model.CurrentTournamentOfCurrentUser[0].EndDate.ToString("dd/MM/yyyy")</p></h3>
+                </div>
+                <br />
+      }
+    }
+
+  <form
+      method="post" class="LogOutForm">
+      <button type="submit" class="MenuButton LogOutButton">Logout</button>
+  </form>

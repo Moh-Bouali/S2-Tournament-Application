@@ -1,0 +1,34 @@
+﻿@page
+@model Website_DuelSyns.Inc_Synthesis_2022.Pages.TournamentInfoModel
+@{
+}
+@if(Model.TournamentList.Count >= 0)
+{
+ @foreach (var item in Model.TournamentList)
+    {
+        <div class= "SignUpForTournament">
+        <h1>@item.TournamentName</h1>
+        <h3><p>ID : @item.TournamentId</p>
+        <p>Type: @item.SportTypeDTO.Name</p>
+        <p>Start Date : @item.StartingDate.ToString("dd/MM/yyyy")</p>
+        <p>End Date : @item.EndDate.ToString("dd/MM/yyyy")</p>
+        <p>Maximum Players : @item.MaxPlayers</p>
+        <p>Minimum Players : @item.MinPlayers</p>
+        <p>Registered players : @item.RegisteredPlayers</p></h3>
+        <div class="buttons"><form class="Register" method="post"> <button class = "LeaderBoard" asp-route-id="@item.TournamentId" >LeaderBoard</button></form>
+        <form class="Register" method="post"> <button asp-page-handler="Detail" class = "Details" asp-route-id="@item.TournamentId" >Details</button></form>
+    </div>    
+    </div>
+        <br />
+    }   
+}
+else{
+        <div class= "SignUpForTournamentUp">
+    <h3><p>No Tournaments Finished yet</p></h3>
+    </div>
+    <br />
+}
+    <br />
+    <br />
+    <br />
+}
